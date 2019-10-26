@@ -35,22 +35,24 @@ def create_deck(new_deck):
             #card = cm + cn
             card = cn + cm
             new_deck.append(card)
+
+    # shuffle_deck(new_deck)
     return
 
 
-def shuffle_deck(a_deck):
+def shuffle_deck(deck):
     'Desc: Shuffle a deck'
     #shuffledDeck = copy.copy(deck)
-    random.shuffle(a_deck)
+    random.shuffle(deck)
     return
 
 
-def record_deck(a_deck, filename):
+def record_deck(deck, filename):
     'Desc: Write a deck into a specified file'
-    out_path = os.getcwd() + '\\OutputDecks\\' + filename
+    out_path = os.getcwd() + '\\output_decks\\' + filename
     f = codecs.open(out_path, "w", "utf-8")
-    for card in a_deck:
+    for card in deck:
         f.write(card)
-        f.write('\t')
-    f.close
+        f.write('\n')
+    f.close()
     return

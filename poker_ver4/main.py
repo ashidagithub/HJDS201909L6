@@ -8,55 +8,34 @@
 # 完成一个荷官洗牌发牌给n个玩家的模拟程序
 # ------------------------(max to 80 columns)-----------------------------------
 
-from my_mods import *
-from machine.standard_machine import *
-from dealer.Mike import *
+#from my_mods import *
+from Machine.standard_machine import *
+from Dealer.Mike import *
 
 # Phase 1 -------------------------------------------------------
 # 从机器取一副新牌并写入一个文件
 deck = []
 create_deck(deck)
-fname = 'deck01.txt'
+fname = 'NewDeck_54.txt'
 record_deck(deck, fname)
-
-# 完成动作后显示信息
-pnt_cut_line(1)
-msg = '1st time I got a new deck , total %d cards, detail is :\n%s' % (
-    len(deck), deck)
-pnt_box(msg)
-
 
 # Phase 2 -------------------------------------------------------
 # 重新从机器拿一副牌，并重新洗牌并将结果写入另一个文件
 deck = []
 create_deck(deck)
 shuffle_deck(deck)
-fname = 'deck02.txt'
+fname = 'NewDeck_54_Shuffled.txt'
 record_deck(deck, fname)
-
-# 完成动作后显示信息
-pnt_cut_line(2)
-msg = '2nd I got another new-shuffled deck , total %d cards, detail is :\n%s' % (
-    len(deck), deck)
-pnt_box(msg)
-
 
 # Phase 3 -------------------------------------------------------
 # 给某个玩家发几张牌
 card_num = 5
 p1_deck = []
 deal_to_a_player(deck, card_num, p1_deck)
-fname = 'Player1-Cards.txt'
+fname = 'Player1Cards.txt'
 record_deck(p1_deck, fname)
-fname = 'Remained-Deck.txt'
+fname = 'RemainedDeck.txt'
 record_deck(deck, fname)
-
-pnt_cut_line(3)
-msg = 'Mike dealed %d cards to first player, detail is :\n%s' % (
-    card_num, p1_deck)
-pnt_box(msg)
-msg = 'Remained %d cards, detail is :\n%s' % (len(deck), deck)
-pnt_box(msg)
 
 # Phase 3 -------------------------------------------------------
 # 给多个玩家发牌
@@ -66,11 +45,8 @@ deck = []
 create_deck(deck)
 shuffle_deck(deck)
 
-numOfPlayers = 3
+numOfPlayers = 3    #
 cardsOfPlayer = int(len(deck) / numOfPlayers)
-msg = '--debug: %d players, every one has %d cards.' % (
-    numOfPlayers, cardsOfPlayer)
-pnt_box(msg)
 
 p1_deck = []
 deal_to_a_player(deck, cardsOfPlayer, p1_deck)
